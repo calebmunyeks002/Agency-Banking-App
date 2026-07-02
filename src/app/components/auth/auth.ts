@@ -1,4 +1,4 @@
-import { Component, Injector } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'; // Combined for cleanliness
 import { AuthService } from '../../services/auth';
@@ -7,7 +7,7 @@ import { AuthService } from '../../services/auth';
 @Component({
   selector: 'app-auth',
   standalone: true, // <-- ADDED THIS LINE
-  imports: [FormsModule, ReactiveFormsModule, CommonModule, AuthService], // <-- ADDED AuthService to imports
+  imports: [CommonModule, FormsModule, ReactiveFormsModule], // <-- ADDED AuthService to imports
   templateUrl: './auth.html',
   styleUrl: './auth.scss'
 })

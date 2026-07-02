@@ -1,4 +1,23 @@
-import { Service } from '@angular/core';
+import { Injectable } from '@angular/core';
 
-@Service()
-export class Auth {}
+@Injectable({
+  providedIn: 'root'
+})
+export class AuthService {
+
+  private loggedIn = false;
+
+  constructor() {}
+
+  setLoggedIn(status: boolean): void {
+    this.loggedIn = status;
+  }
+
+  isLoggedIn(): boolean {
+    return this.loggedIn;
+  }
+
+  logout(): void {
+    this.loggedIn = false;
+  }
+}
