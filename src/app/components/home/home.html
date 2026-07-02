@@ -1,0 +1,22 @@
+<header class="header">
+    
+  <div class="header-content">
+    <div class="logo" routerLink="/">
+      <span class="bank-name">MUNYEKS</span>
+      <span class="bank-tag">AGENCY BANKING</span>
+    </div>
+    
+    <nav class="nav-links">
+      <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>
+      <a routerLink="/services" routerLinkActive="active">Services</a>
+      <a routerLink="/agents" routerLinkActive="active">Agents</a>
+    </nav>
+        
+    <div class="auth-buttons">
+      <button class="login-btn" routerLink="/auth">Login / Register</button>
+    </div>
+  </div>
+</header>
+
+<!-- This tag dynamically swaps your pages (Home, Send, Auth, etc.) based on the URL -->
+<router-outlet></router-outlet>

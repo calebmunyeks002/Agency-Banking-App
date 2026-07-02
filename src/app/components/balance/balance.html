@@ -1,0 +1,26 @@
+<div class="transaction-card">
+  <h2>Account Balance Inquiry</h2>
+  
+  <form *ngIf="!balanceShown" (ngSubmit)="checkBalance()">
+    <div class="form-group">
+      <label>Bank Account Number</label>
+      <input type="text" [(ngModel)]="inquiry.accountNo" name="accountNo" required>
+    </div>
+    <div class="form-group">
+      <label>Registered Phone Number</label>
+      <input type="tel" [(ngModel)]="inquiry.phone" name="phone" required>
+    </div>
+    <div class="form-group">
+      <label>Enter Account PIN</label>
+      <input type="password" [(ngModel)]="inquiry.pin" maxlength="4" placeholder="••••" required>
+    </div>
+    <button type="submit" class="submit-btn">View Balance</button>
+  </form>
+
+  <div class="balance-display" *ngIf="balanceShown">
+    <span class="material-symbols-outlined success-icon">account_balance_wallet</span>
+    <small>Current Available Balance</small>
+    <h1>KES 54,230.00</h1>
+    <button class="submit-btn" (click)="balanceShown = false">Done</button>
+  </div>
+</div>

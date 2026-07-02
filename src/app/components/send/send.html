@@ -1,0 +1,39 @@
+<div class="transaction-card">
+  <h2>Send Money Asset</h2>
+  
+  <div class="channel-toggle">
+    <button [class.active]="sendData.type === 'bank'" (click)="sendData.type = 'bank'">To Bank</button>
+    <button [class.active]="sendData.type === 'mpesa'" (click)="sendData.type = 'mpesa'">To M-Pesa</button>
+  </div>
+
+  <form (ngSubmit)="requestPinConfirmation()">
+    <div class="form-group">
+      <label>Your Account Number</label>
+      <input type="text" [(ngModel)]="sendData.myAccount" name="myAccount" required>
+    </div>
+    <div class="form-group">
+      <label>Your Phone Number</label>
+      <input type="tel" [(ngModel)]="sendData.myPhone" name="myPhone" required>
+    </div>
+    <div class="form-group">
+      <label>{{ sendData.type === 'bank' ? 'Recipient Account Number' : 'Recipient M-Pesa Mobile Number' }}</label>
+      <input type="text" [(ngModel)]="sendData.recipient" name="recipient" required>
+    </div>
+    <div class="form-group">
+      <label>Amount (KES)</label>
+      <input type="number" [(ngModel)]="sendData.amount" name="amount" required>
+    </div>
+
+    <button type="submit" class="submit-btn">Continue</button>
+  </form>
+
+  <!-- Security Transaction Cover Dialog -->
+  <div class="pin-overlay" *ngIf="requirePinEntry">
+    <div class="pin-modal">
+      <h3>Enter Secret Transaction PIN</h3>
+      <p>Confirm transfer of KES {{sendData.amount}} to {{sendData.recipient}}</p>
+      <input type="password" [(ngModel)]="transactionPin" maxlength="4" placeholder="••••" class="pin-input">
+      <button class="confirm-btn" (click)="executeTransaction()">Authorize Payment</button>
+    </div>
+  </div>
+</div>

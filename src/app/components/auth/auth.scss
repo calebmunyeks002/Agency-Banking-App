@@ -1,0 +1,169 @@
+// --- Theme Variables ---
+$primary-color: #1e3a8a;    // Deep Navy Blue
+$accent-color: #3b82f6;     // Vibrant Tech Blue
+$text-dark: #1f2937;        // Charcoal Body Text
+$text-muted: #6b7280;       // Slate Gray for Labels/Paragraphs
+$bg-light: #f3f4f6;         // Warm Off-White Page Background
+$white: #ffffff;
+$border-radius: 12px;
+$transition-speed: 0.3s;
+
+// --- Centered Layout Wrapper ---
+.auth-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 80px); // Subtracts approximate navbar height
+  background: radial-gradient(circle at top right, rgba($accent-color, 0.08), transparent), $bg-light;
+  padding: 20px;
+}
+
+// --- Content Card Box ---
+.auth-box {
+  background: $white;
+  width: 100%;
+  max-width: 440px;
+  padding: 35px 30px;
+  border-radius: $border-radius;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05), 0 2px 5px rgba(0, 0, 0, 0.02);
+  border: 1px solid rgba($text-muted, 0.1);
+}
+
+// --- Tab Headers Toggles (Login vs Register) ---
+.auth-tabs {
+  display: flex;
+  background-color: lighten($bg-light, 2%);
+  padding: 6px;
+  border-radius: ($border-radius - 4px);
+  margin-bottom: 30px;
+
+  button {
+    flex: 1;
+    background: none;
+    border: none;
+    padding: 12px 16px;
+    font-size: 1rem;
+    font-weight: 600;
+    color: $text-muted;
+    cursor: pointer;
+    border-radius: ($border-radius - 6px);
+    transition: all $transition-speed ease;
+
+    &:hover {
+      color: $primary-color;
+    }
+
+    &.active {
+      background-color: $white;
+      color: $primary-color;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+    }
+  }
+}
+
+// --- Form Element Structures ---
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+
+  label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: lighten($text-dark, 15%);
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  input {
+    width: 100%;
+    padding: 12px 16px;
+    font-size: 1rem;
+    color: $text-dark;
+    background-color: $white;
+    border: 1px solid lighten($text-muted, 25%);
+    border-radius: 8px;
+    outline: none;
+    transition: border-color $transition-speed ease, box-shadow $transition-speed ease;
+
+    &::placeholder {
+      color: lighten($text-muted, 15%);
+    }
+
+    &:focus {
+      border-color: $accent-color;
+      box-shadow: 0 0 0 3px rgba($accent-color, 0.15);
+    }
+  }
+}
+
+// --- Dynamic Interactive Primary Action Buttons ---
+.submit-btn {
+  width: 100%;
+  background-color: $primary-color;
+  color: $white;
+  border: none;
+  padding: 14px 20px;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 10px;
+  box-shadow: 0 4px 12px rgba($primary-color, 0.15);
+  transition: all $transition-speed ease;
+
+  &:hover {
+    background-color: darkene($primary-color, 5%);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 16px rgba($primary-color, 0.25);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+// --- Step 2: OTP Specific View Elements ---
+.otp-view {
+  text-align: center;
+  animation: fadeIn 0.4s ease-out;
+
+  h3 {
+    font-size: 1.4rem;
+    color: $primary-color;
+    margin: 0 0 10px 0;
+    font-weight: 700;
+  }
+
+  p {
+    font-size: 0.95rem;
+    color: $text-muted;
+    line-height: 1.5;
+    margin-bottom: 25px;
+  }
+
+  .form-group {
+    text-align: left;
+
+    input {
+      text-align: center;
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+    }
+  }
+}
+
+// --- Micro-Animations ---
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

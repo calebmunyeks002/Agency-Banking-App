@@ -1,0 +1,40 @@
+<div class="transaction-card">
+  <h2>Agency Pay Operations</h2>
+
+  <form (ngSubmit)="requirePinEntry = true">
+    <div class="form-group">
+      <label>Source Account Number</label>
+      <input type="text" [(ngModel)]="paymentData.accountNo" name="accountNo" required>
+    </div>
+
+    <div class="form-group">
+      <label>Payment Channel</label>
+      <select [(ngModel)]="paymentData.method" name="method" required>
+        <option value="paybill">Pay Bill</option>
+        <option value="buygoods">Buy Goods & Services</option>
+        <option value="pochi">Pochi La Biashara</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>Payment Reference / Reason</label>
+      <input type="text" [(ngModel)]="paymentData.reason" name="reason" placeholder="e.g. DSTV, Fees, Supermarket" required>
+    </div>
+
+    <div class="form-group">
+      <label>Amount</label>
+      <input type="number" [(ngModel)]="paymentData.amount" name="amount" required>
+    </div>
+
+    <button type="submit" class="submit-btn">Proceed to Pay</button>
+  </form>
+
+  <!-- PIN Modal -->
+  <div class="pin-overlay" *ngIf="requirePinEntry">
+    <div class="pin-modal">
+      <h3>Authorize Payment</h3>
+      <input type="password" [(ngModel)]="pin" maxlength="4" placeholder="••••" class="pin-input">
+      <button class="confirm-btn" (click)="completePayment()">Confirm Payment</button>
+    </div>
+  </div>
+</div>

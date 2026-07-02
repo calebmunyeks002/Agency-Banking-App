@@ -1,0 +1,144 @@
+// --- Theme Variables (Shared for Application Consistency) ---
+$primary-color: #1e3a8a;    // Deep Navy Blue
+$accent-color: #3b82f6;     // Vibrant Tech Blue
+$success-color: #10b981;    // Eco-Green for monetary values
+$text-dark: #1f2937;        // Charcoal Body Text
+$text-muted: #6b7280;       // Slate Gray
+$bg-light: #f3f4f6;         // Off-White Page Background
+$white: #ffffff;
+$border-radius: 12px;
+$transition-speed: 0.3s;
+
+// --- Transaction Card Frame ---
+.transaction-card {
+  background: $white;
+  width: 100%;
+  max-width: 480px;
+  margin: 40px auto;
+  padding: 35px 30px;
+  border-radius: $border-radius;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba($text-muted, 0.1);
+
+  h2 {
+    font-size: 1.5rem;
+    color: $primary-color;
+    margin-bottom: 25px;
+    font-weight: 700;
+    text-align: center;
+  }
+}
+
+// --- Standard Form Structural Elements ---
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+
+  label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: color.adjust($text-dark, $lightness: 15%);
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  input {
+    width: 100%;
+    padding: 12px 16px;
+    font-size: 1rem;
+    color: $text-dark;
+    border: 1px solid lighten($text-muted, 25%);
+    border-radius: 8px;
+    outline: none;
+    transition: border-color $transition-speed ease, box-shadow $transition-speed ease;
+
+    &::placeholder {
+      color: lighten($text-muted, 15%);
+      letter-spacing: normal;
+    }
+
+    &:focus {
+      border-color: $accent-color;
+      box-shadow: 0 0 0 3px rgba($accent-color, 0.15);
+    }
+
+    // Centered styling for mask pin fields
+    &[type="password"] {
+      text-align: center;
+      font-size: 1.25rem;
+      letter-spacing: 4px;
+    }
+  }
+}
+
+// --- Interactive Primary Action Buttons ---
+.submit-btn {
+  width: 100%;
+  background-color: $primary-color;
+  color: $white;
+  border: none;
+  padding: 14px 20px;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 10px;
+  box-shadow: 0 4px 12px rgba($primary-color, 0.15);
+  transition: all $transition-speed ease;
+
+  &:hover {
+    background-color: darken($primary-color, 5%);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 16px rgba($primary-color, 0.25);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+// --- Secure Balance Presentation Screen ---
+.balance-display {
+  text-align: center;
+  padding: 20px 10px;
+  animation: scaleUp 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  .success-icon {
+    font-size: 4rem;
+    color: $success-color;
+    background-color: rgba($success-color, 0.1);
+    padding: 16px;
+    border-radius: 50%;
+    margin-bottom: 15px;
+  }
+
+  small {
+    display: block;
+    font-size: 0.9rem;
+    color: $text-muted;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+  }
+
+  h1 {
+    font-size: 2.25rem;
+    color: $text-dark;
+    font-weight: 800;
+    margin: 0 0 30px 0;
+  }
+}
+
+// --- Micro-Animations ---
+@keyframes scaleUp {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
